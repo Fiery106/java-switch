@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Tippeprogram med if - else if - else
+        </title>
+    </head>
+
+
+
+    <body>
+        <h1>
+            Fotballkamp tipping
+        </h1>
+
+        <input type="text" placeholder="skriv H, U eller B" id="tip"/>
+
+        <button onclick="makeTip()">
+            Gjett
+        </button>
+
+        <p id="output"></p>
+
+
+        <script>
+            let output = document.getElementById("output");
+
+
+            function makeTip() {
+                let tip = document.getElementById("tip").value;
+
+                if (tip == "H" || tip == "h") {
+                    output.innerText = "Hjemme"
+                } else if (tip == "U" || tip == "u") {
+                    output.innerText = "Ute"
+                } else if (tip == "B" || tip == "b") {
+                    output.innerText = "Borte"
+                } else {
+                    output.innerText = "Ingen verdi!"
+                }
+            }
+        </script>
+    </body>
+</html>
