@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Oppdatert BMI-kalkulator
+        </title>
+    </head>
+
+
+
+    <body>
+        <div>
+            <h1>
+                BMI-kalkulator
+            </h1>
+
+            <div>
+                <label>
+                    Vekt
+                </label>
+                <input type="number" id="weight" placeholder="vekt i kg"/>
+
+                <label>
+                    Høyde
+                </label>
+                <input type="number" id="height" placeholder="høyde i m"/>
+            </div>
+
+            <button onclick="calcScore()">
+                Send
+            </button>
+        </div>
+
+        <p id="output"></p>
+
+
+        <script>
+            let output = document.getElementById("output");
+
+
+            function calcScore() {
+                let weight = document.getElementById("weight").value;
+                let height = document.getElementById("height").value;
+
+                let score = ((weight / (height * height)) * 10000).toFixed(2);
+
+                /*
+                'Lett undervekt' : bmi under 18.5
+                'Normalvekt' : bmi fom. 18.5 tom. 24.9
+                'Lett overvekt' : bmi fom. 25 tom. 29.9
+                'Fedme' : bmi fom. 30 
+                */
+
+
+                if (score < 18.5 ) { //Lett undervekt
+                    output.innerText = `Din BMI er ${score}. Dette klassifiseres som "Lett undervekt".`
+
+                } else if (score >= 18.5 && score <= 24.9) { //Normalvekt
+                    output.innerText = `Din BMI er ${score}. Dette klassifiseres som "Normalvekt".`
+
+                } else if (score >= 25 && score <= 29.9) { //Lett overvekt
+                    output.innerText = `Din BMI er ${score}. Dette klassifiseres som "Lett overvekt".`
+
+                } else if (score > 30) {//Fedme
+                    output.innerText = `Din BMI er ${score}. Dette klassifiseres som "Fedme".`
+                }
+            }
+        </script>
+    </body>
+</html>
