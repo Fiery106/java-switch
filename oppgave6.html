@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Skuddår!
+        </title>
+    </head>
+
+
+
+    <body>
+        <div>
+            <h1>
+                Skriv inn et år
+            </h1>
+
+            <input type="number" id="year" min="0" required />
+
+            <button onclick="checkYear()">
+                Send
+            </button>
+        </div>
+
+        <p id="output"></p>
+
+
+        <script>
+            let output = document.getElementById("output");
+            let extra_text = "Skuddår: <br> Skuddår er år som er delelige på 4 og som ikke er delelige med 100, med unntak for år som er delelige på 400. Årene 1700, 1800, 1900, 2100 og 2200 er altså ikke skuddår. <br> "
+
+            function checkYear() {
+                let year = Number(document.getElementById("year").value);
+
+                if (year) {
+                    if (year % 4 == 0) { //deles ved 4
+                        if (leapCalc(year)) { //ikke årene 1700, 1800, 1900...
+                            writeOutput(year, true)
+                        } else {
+                            writeOutput(year, false)
+                        }
+                    } else {
+                        writeOutput(year, false)
+                    }
+                } else {
+                    output.innerHTML = "Noe feil har opptstått. Sjekk om informasjonen du har gitt er riktig"
+                }
+            }
+
+
+            function leapCalc(x) {
+                if (x == 1700) {
+                    return false
+                } else if (x == 1800) {
+                    return false
+                } else if (x == 1900) {
+                    return false
+                } else if (x == 2100) {
+                    return false
+                } else if (x == 2200) {
+                    return false
+                } else {
+                    return true
+                }
+            }
+
+
+            function writeOutput(y, z) {
+                if (z) {
+                    output.innerHTML = `${extra_text} Året ${y} er et Skuddår! :)`
+
+                } else {
+                    output.innerHTML = `${extra_text} Året ${y} er ikke et Skuddår :(`
+                }
+            }
+        </script>
+    </body>
+</html>
